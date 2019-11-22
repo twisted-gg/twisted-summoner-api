@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common'
 import { SummonerService } from './summoner.service'
 import { SummonerController } from './summoner.controller'
 import { MongooseModule } from '@nestjs/mongoose'
-import { SummonerModel } from './models/summoner.model'
 import { SummonerLeaguesModule } from '../summoner-leagues/summoner-leagues.module'
+import { SummonerModel } from '../models/summoner/summoner.model'
 
 @Module({
   imports: [

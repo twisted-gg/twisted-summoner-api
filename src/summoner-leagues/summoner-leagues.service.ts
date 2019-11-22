@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common'
-import { ISummonerLeagueModel } from './models/summoner-leagues.interface'
 import { ModelsName } from '../enums/database.enum'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
@@ -8,6 +7,7 @@ import { Regions } from 'twisted/dist/constants'
 import * as utils from './summoner-leagues.utils'
 import { Cache } from '../cache/cache.decorator'
 import { CacheTimes } from '../enums/cache.enum'
+import { ISummonerLeagueModel } from '../models/summoner-leagues/summoner-leagues.interface'
 
 @Injectable()
 export class SummonerLeaguesService {

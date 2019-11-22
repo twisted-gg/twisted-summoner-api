@@ -1,4 +1,4 @@
-import { IBaseInterface } from '../../base/base.interface'
+import { IBaseInterface } from 'twisted-common/src/config'
 
 export interface ISummonerLeagueModel extends IBaseInterface {
   queueType: string

@@ -1,7 +1,7 @@
 import { SummonerV4DTO } from 'twisted/dist/dto'
-import { ISummonerModel } from './models/summoner.interface'
 import { Regions } from 'twisted/dist/constants'
-import { ISummonerLeagueModel } from '../summoner-leagues/models/summoner-leagues.interface'
+import { ISummonerLeagueModel } from '../models/summoner-leagues/summoner-leagues.interface'
+import { ISummonerModel } from '../models/summoner/summoner.interface'
 
 export enum SummonerUtilsEnum {
   BOT_TAG = '0',

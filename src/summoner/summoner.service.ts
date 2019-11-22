@@ -2,8 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common'
 import { Model, ModelUpdateOptions } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
 import { ModelsName } from '../enums/database.enum'
-import { ISummonerModel } from './models/summoner.interface'
-import { GetSummonerQueryDTO } from './models/summoner.dto'
 import { RiotApiService } from '../riot-api/riot-api.service'
 import * as summonerUtils from './summoner.utils'
 import * as _ from 'lodash'
@@ -11,11 +9,9 @@ import { SummonerLeaguesService } from '../summoner-leagues/summoner-leagues.ser
 import { SummonerV4DTO } from 'twisted/dist/dto'
 import { Cache } from '../cache/cache.decorator'
 import { CacheTimes } from '../enums/cache.enum'
-
-export enum SummonerServiceInsertMatch {
-  LOL,
-  TFT
-}
+import { MatchType, SummonerServiceInsertMatch } from '../enums/summoners.enum'
+import { ISummonerModel } from '../models/summoner/summoner.interface'
+import { GetSummonerQueryDTO } from 'twisted-common/src/config'
 
 @Injectable()
 export class SummonerService {
@@ -117,7 +113,7 @@ export class SummonerService {
 
   async insertMatches (ids: string[], matchId: string, type: SummonerServiceInsertMatch) {
     const key =
-      type === SummonerServiceInsertMatch.LOL ? 'lolMatches' : 'tftMatches'
+      type === SummonerServiceInsertMatch.LOL ? MatchType.LOL : MatchType.TFT
     const condition = {
       _id: {
         $in: ids

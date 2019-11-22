@@ -1,5 +1,5 @@
 import { ApiResponseModelProperty } from '@nestjs/swagger'
-import { BaseDTO } from '../../base/base.dto'
+import { BaseDTO } from 'twisted-common/src/config'
 
 export class GetSummonerLeaguesDTO extends BaseDTO {
   @ApiResponseModelProperty()

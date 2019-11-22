@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common'
 import { SummonerLeaguesService } from './summoner-leagues.service'
 import { MongooseModule } from '@nestjs/mongoose'
-import { SummonerLeagueModel } from './models/summoner-leagues.model'
+import { SummonerLeagueModel } from '../models/summoner-leagues/summoner-leagues.model'
 
 @Module({
   imports: [

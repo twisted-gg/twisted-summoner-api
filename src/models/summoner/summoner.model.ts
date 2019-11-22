@@ -1,8 +1,8 @@
 import * as mongoose from 'mongoose'
 import { ModelsName } from '../../enums/database.enum'
 import { IModels } from '../../database/database.types'
-import { SummonerLeagueModel } from '../../summoner-leagues/models/summoner-leagues.model'
 import { ModelsOptions } from 'twisted-common/src/config'
+import { SummonerLeagueModel } from '../summoner-leagues/summoner-leagues.model'
 
 // Schema definition
 const schema = new mongoose.Schema({

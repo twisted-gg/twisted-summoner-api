@@ -1,6 +1,6 @@
 import { Regions } from 'twisted/dist/constants'
-import { ISummonerLeagueModel } from '../../summoner-leagues/models/summoner-leagues.interface'
-import { IBaseInterface } from '../../base/base.interface'
+import { IBaseInterface } from 'twisted-common/src/config'
+import { ISummonerLeagueModel } from '../summoner-leagues/summoner-leagues.interface'
 
 export interface ISummonerModel extends IBaseInterface {
   name: string

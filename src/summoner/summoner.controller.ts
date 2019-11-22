@@ -1,11 +1,11 @@
-import { Controller, Post, Get, Query, Body } from '@nestjs/common'
+import { Controller, Post, Get, Query, Body, Patch } from '@nestjs/common'
 import { SummonerService } from './summoner.service'
-import { GetSummonerQueryDTO, GetSummonerDTO } from './models/summoner.dto'
 import { ApiOperation, ApiUseTags, ApiOkResponse } from '@nestjs/swagger'
-import { GetSummonerLeaguesDTO } from '../summoner-leagues/models/summoner-leagues.dto'
+import { GetSummonerLeaguesDTO } from '../models/summoner-leagues/summoner-leagues.dto'
+import { GetSummonerDTO, AddMatches } from '../models/summoner-leagues/summoner.dto'
+import { GetSummonerQueryDTO } from 'twisted-common/src/config'
 
-@Controller('summoner')
-@ApiUseTags('Summoners')
+@Controller()
 export class SummonerController {
   constructor (
     private readonly service: SummonerService
@@ -16,17 +16,9 @@ export class SummonerController {
   @ApiOperation({
     title: 'Find / create username'
   })
+  @ApiUseTags('Getters')
   get (@Query() params: GetSummonerQueryDTO) {
     return this.service.get(params)
-  }
-
-  @Post()
-  @ApiOkResponse({ type: GetSummonerDTO })
-  @ApiOperation({
-    title: 'Update / create new user'
-  })
-  update (@Body() body: GetSummonerQueryDTO) {
-    return this.service.update(body)
   }
 
   @Get('leagues/historic')
@@ -35,7 +27,27 @@ export class SummonerController {
     title: 'Leagues historic',
     description: 'Return leagues historic from an user'
   })
+  @ApiUseTags('Getters')
   leagues (@Query() params: GetSummonerQueryDTO) {
     return this.service.leaguesHistoric(params)
+  }
+
+  @Post()
+  @ApiOkResponse({ type: GetSummonerDTO })
+  @ApiOperation({
+    title: 'Update / create new user'
+  })
+  @ApiUseTags('Update')
+  update (@Body() body: GetSummonerQueryDTO) {
+    return this.service.update(body)
+  }
+
+  @Patch('match')
+  @ApiOperation({
+    title: 'Add matches to summoner'
+  })
+  @ApiUseTags('Update')
+  async addMatches (@Query() params: AddMatches) {
+    await this.service.insertMatches([params.summoner_id], params.match_id, params.type)
   }
 }
