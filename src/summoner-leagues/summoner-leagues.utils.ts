@@ -1,6 +1,6 @@
 import { SummonerLeagueDto } from 'twisted/dist/dto'
 import { castArray } from 'lodash'
-import { ISummonerLeagueModel } from '../models/summoner-leagues/summoner-leagues.interface'
+import { ISummonerLeagueModel } from 'twisted-models'
 
 const RomanNumerals = require('js-roman-numerals')
 

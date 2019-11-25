@@ -1,7 +1,6 @@
 import { SummonerV4DTO } from 'twisted/dist/dto'
 import { Regions } from 'twisted/dist/constants'
-import { ISummonerLeagueModel } from '../models/summoner-leagues/summoner-leagues.interface'
-import { ISummonerModel } from '../models/summoner/summoner.interface'
+import { ISummonerLeagueModel, ISummonerModel } from 'twisted-models'
 
 export enum SummonerUtilsEnum {
   BOT_TAG = '0',
@@ -44,6 +43,6 @@ export function riotToModel (
     bot: isBot(riot.accountId),
     leagues: matchLeagues(leagues),
     loading,
-    region
+    region: region as any
   }
 }

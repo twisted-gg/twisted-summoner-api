@@ -10,9 +10,6 @@ function convert (val: string) {
 
 export enum CacheTimes {
   SUMMONER = convert('2h'),
-  TFT_MATCH_DETAILS = convert('10d'),
-  TFT_MATCH_LISTING = convert('20m'),
-  CURRENT_VERSION = convert('1w'),
   DEFAULT = convert('1h')
 }
 
