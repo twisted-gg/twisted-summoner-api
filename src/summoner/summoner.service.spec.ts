@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { SummonerService } from './summoner.service'
-import { DatabaseTestProviders } from '../database/database.providers'
 import { SummonerLeaguesService } from '../summoner-leagues/summoner-leagues.service'
 import { RiotApiService } from '../riot-api/riot-api.service'
 import { ConfigService } from '../config/config.service'
+import { DatabaseTestProviders } from 'twisted-models'
 
 describe('SummonerService', () => {
   let service: SummonerService
