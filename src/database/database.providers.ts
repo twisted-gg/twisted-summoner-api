@@ -1,5 +1,5 @@
 import { getModelToken } from '@nestjs/mongoose'
-import { ModelsName } from 'twisted-models/src/enum/collections.enum'
+import { ModelsName } from 'twisted-models/dist/enum/collections.enum'
 
 export const useValue = {
   findOne: () => Promise.resolve(),

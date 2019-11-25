@@ -7,7 +7,7 @@ import * as utils from './summoner-leagues.utils'
 import { Cache } from '../cache/cache.decorator'
 import { CacheTimes } from '../enums/cache.enum'
 import { ISummonerLeagueModel } from 'twisted-models'
-import { ModelsName } from 'twisted-models/src/enum/collections.enum'
+import { ModelsName } from 'twisted-models/dist/enum/collections.enum'
 
 @Injectable()
 export class SummonerLeaguesService {

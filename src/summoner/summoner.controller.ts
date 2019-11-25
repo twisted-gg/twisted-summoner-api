@@ -1,9 +1,8 @@
 import { Controller, Post, Get, Query, Body, Patch } from '@nestjs/common'
 import { SummonerService } from './summoner.service'
 import { ApiOperation, ApiUseTags, ApiOkResponse } from '@nestjs/swagger'
-import { GetSummonerQueryDTO } from 'twisted-common/src/config'
-import { GetSummonerLeaguesDTO } from 'twisted-models'
-import { GetSummonerDTO } from '../dto/summoner.dto'
+import { GetSummonerQueryDTO } from 'twisted-common'
+import { GetSummonerLeaguesDTO, GetSummonerDTO } from 'twisted-models'
 import { AddMatches } from '../dto/add-matches.dto'
 
 @Controller()

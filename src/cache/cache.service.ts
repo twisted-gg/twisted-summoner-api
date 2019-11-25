@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 import * as Redis from 'redis'
 import { ConfigService } from '../config/config.service'
 import { CacheTimes } from '../enums/cache.enum'
-import { CacheServiceCommon } from 'twisted-common/src/services'
+import { CacheServiceCommon } from 'twisted-common'
 
 const config = new ConfigService()
 const available = config.getBoolean('redis.enable')

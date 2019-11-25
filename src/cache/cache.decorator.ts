@@ -1,6 +1,6 @@
 import { CacheService } from './cache.service'
 import { version } from '../../package.json'
-import * as utils from 'twisted-common/src/services/cache/CacheService.utils'
+import * as utils from 'twisted-common/dist/services/cache/CacheService.utils'
 
 const service = new CacheService()
 

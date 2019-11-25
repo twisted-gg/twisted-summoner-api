@@ -9,9 +9,9 @@ import { SummonerV4DTO } from 'twisted/dist/dto'
 import { Cache } from '../cache/cache.decorator'
 import { CacheTimes } from '../enums/cache.enum'
 import { MatchType, SummonerServiceInsertMatch } from '../enums/summoners.enum'
-import { GetSummonerQueryDTO } from 'twisted-common/src/config'
+import { GetSummonerQueryDTO } from 'twisted-common'
 import { ISummonerModel } from 'twisted-models'
-import { ModelsName } from 'twisted-models/src/enum/collections.enum'
+import { ModelsName } from 'twisted-models/dist/enum/collections.enum'
 
 @Injectable()
 export class SummonerService {
