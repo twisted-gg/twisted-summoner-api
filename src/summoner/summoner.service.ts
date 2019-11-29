@@ -112,6 +112,9 @@ export class SummonerService {
   }
 
   async insertMatches (ids: string[], matchId: string, type: SummonerServiceInsertMatch) {
+    if (!matchId) {
+      return
+    }
     const key =
       type === SummonerServiceInsertMatch.LOL ? MatchType.LOL : MatchType.TFT
     const condition = {
