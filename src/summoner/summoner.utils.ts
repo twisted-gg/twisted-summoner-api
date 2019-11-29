@@ -32,17 +32,19 @@ export function riotToModel (
   region: Regions,
   loading: boolean
 ): Partial<ISummonerModel> {
+  const bot = isBot(riot.accountId)
+  const accountId = bot ? riot.name : riot.accountId
   return {
     name: riot.name,
     profileIconId: riot.profileIconId,
     summonerLevel: riot.summonerLevel,
     revisionDate: riot.revisionDate,
     id: riot.id,
-    accountId: riot.accountId,
     puuid: riot.puuid,
-    bot: isBot(riot.accountId),
     leagues: matchLeagues(leagues),
-    loading,
-    region: region as any
+    accountId,
+    region,
+    bot,
+    loading
   }
 }
