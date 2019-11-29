@@ -49,7 +49,8 @@ export class SummonerService {
     delete model._id
     const condition = {
       puuid: model.puuid,
-      region: model.region
+      region: model.region,
+      bot: model.bot
     }
     const options: ModelUpdateOptions = {
       upsert: true
