@@ -1,5 +1,5 @@
 import { romanToInt, riotToModel } from './summoner-leagues.utils'
-import { SummonerLeagueDto } from 'twisted/dist/dto'
+import { SummonerLeagueDto } from '@twisted.gg/common/dist/wrapper/dto'
 
 describe('Summoner leagues utils', () => {
   describe('Roman numbers', () => {

@@ -5,13 +5,13 @@ import { RiotApiService } from '../riot-api/riot-api.service'
 import * as summonerUtils from './summoner.utils'
 import * as _ from 'lodash'
 import { SummonerLeaguesService } from '../summoner-leagues/summoner-leagues.service'
-import { SummonerV4DTO } from 'twisted/dist/dto'
 import { Cache } from '../cache/cache.decorator'
 import { CacheTimes } from '../enums/cache.enum'
 import { MatchType, SummonerServiceInsertMatch } from '../enums/summoners.enum'
-import { GetSummonerQueryDTO } from 'twisted-common'
-import { ISummonerModel } from 'twisted-models'
-import { ModelsName } from 'twisted-models/dist/enum/collections.enum'
+import { GetSummonerQueryDTO } from '@twisted.gg/common'
+import { SummonerV4DTO } from '@twisted.gg/common/dist/wrapper/dto'
+import { ISummonerModel } from '@twisted.gg/models'
+import { ModelsName } from '@twisted.gg/models/dist/enum/collections.enum'
 
 @Injectable()
 export class SummonerService {

@@ -5,7 +5,7 @@ import { SummonerModule } from './summoner/summoner.module'
 import { SummonerLeaguesModule } from './summoner-leagues/summoner-leagues.module'
 import { DatabaseConnection } from './database/database.connection'
 import { CacheService } from './cache/cache.service'
-import { OriginMiddleware } from 'twisted-common'
+import { OriginMiddleware } from '@twisted.gg/common'
 
 @Module({
   imports: [

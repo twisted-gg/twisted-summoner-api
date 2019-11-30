@@ -1,6 +1,6 @@
-import { SummonerV4DTO } from 'twisted/dist/dto'
-import { Regions } from 'twisted/dist/constants'
-import { ISummonerLeagueModel, ISummonerModel } from 'twisted-models'
+import { SummonerV4DTO } from '@twisted.gg/common/dist/wrapper/dto'
+import { ISummonerLeagueModel, ISummonerModel } from '@twisted.gg/models'
+import { Regions } from '@twisted.gg/common/dist/wrapper/constants'
 
 export enum SummonerUtilsEnum {
   BOT_TAG = '0',

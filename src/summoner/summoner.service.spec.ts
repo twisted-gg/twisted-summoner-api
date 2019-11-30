@@ -3,7 +3,7 @@ import { SummonerService } from './summoner.service'
 import { SummonerLeaguesService } from '../summoner-leagues/summoner-leagues.service'
 import { RiotApiService } from '../riot-api/riot-api.service'
 import { ConfigService } from '../config/config.service'
-import { DatabaseTestProviders } from 'twisted-models'
+import { DatabaseTestProviders } from '@twisted.gg/models'
 
 describe('SummonerService', () => {
   let service: SummonerService

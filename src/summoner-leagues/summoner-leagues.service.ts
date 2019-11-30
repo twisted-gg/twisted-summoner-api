@@ -2,12 +2,12 @@ import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
 import { RiotApiService } from '../riot-api/riot-api.service'
-import { Regions } from 'twisted/dist/constants'
+import { Regions } from '@twisted.gg/common/dist/wrapper/constants'
 import * as utils from './summoner-leagues.utils'
 import { Cache } from '../cache/cache.decorator'
 import { CacheTimes } from '../enums/cache.enum'
-import { ISummonerLeagueModel } from 'twisted-models'
-import { ModelsName } from 'twisted-models/dist/enum/collections.enum'
+import { ISummonerLeagueModel } from '@twisted.gg/models'
+import { ModelsName } from '@twisted.gg/models/dist/enum/collections.enum'
 
 @Injectable()
 export class SummonerLeaguesService {

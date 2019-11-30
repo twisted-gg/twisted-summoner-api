@@ -3,7 +3,7 @@ import { SummonerService } from './summoner.service'
 import { SummonerController } from './summoner.controller'
 import { MongooseModule } from '@nestjs/mongoose'
 import { SummonerLeaguesModule } from '../summoner-leagues/summoner-leagues.module'
-import { SummonerModel } from 'twisted-models'
+import { SummonerModel } from '@twisted.gg/models'
 
 @Module({
   imports: [

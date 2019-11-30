@@ -3,7 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing'
 import { SummonerLeaguesService } from './summoner-leagues.service'
 import { RiotApiModule } from '../riot-api/riot-api.module'
 import { ConfigModule } from '../config/config.module'
-import { DatabaseTestProviders } from 'twisted-models'
+import { DatabaseTestProviders } from '@twisted.gg/models'
 
 describe('SummonerLeaguesService', () => {
   let service: any
