@@ -30,13 +30,17 @@ export class SummonerService {
     const {
       region,
       summonerName,
-      summonerPUUID
+      summonerPUUID,
+      accountID
     } = params
     let summoner: SummonerV4DTO
     // Find by puuid or summoner name
     if (summonerPUUID) {
       ({ response: summoner } =
         await this.api.getByPUUID(summonerPUUID, region))
+    } else if (accountID) {
+      ({ response: summoner } =
+        await this.api.getByAccountID(accountID, region))
     } else {
       ({ response: summoner } =
         await this.api.getByName(summonerName, region))
@@ -94,6 +98,11 @@ export class SummonerService {
     if (params.summonerPUUID) {
       delete options.name
       _.set(options, 'puuid', params.summonerPUUID)
+    }
+
+    if (params.accountID) {
+      delete options.name
+      _.set(options, 'accountId', params.accountID)
     }
 
     const summoner = await this.repository.findOne(options)
