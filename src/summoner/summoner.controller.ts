@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Query, Body, Patch } from '@nestjs/common'
+import { Controller, Post, Get, Query, Body, Patch, Param } from '@nestjs/common'
 import { SummonerService } from './summoner.service'
 import { ApiOperation, ApiUseTags, ApiOkResponse } from '@nestjs/swagger'
 import { GetSummonerQueryDTO } from '@twisted.gg/common'
@@ -19,6 +19,16 @@ export class SummonerController {
   @ApiUseTags('Getters')
   get (@Query() params: GetSummonerQueryDTO) {
     return this.service.get(params)
+  }
+
+  @Get('by-id/:id')
+  @ApiOkResponse({ type: GetSummonerDTO })
+  @ApiOperation({
+    title: 'Find user by id'
+  })
+  @ApiUseTags('Getters')
+  getById (@Param('id') id: string) {
+    return this.service.getById(id)
   }
 
   @Get('leagues/historic')

@@ -88,6 +88,14 @@ export class SummonerService {
     return this.get(params, false)
   }
 
+  async getById (id: string) {
+    const summoner = await this.repository.findById(id)
+    if (!summoner) {
+      throw new NotFoundException()
+    }
+    return summoner
+  }
+
   async get (params: GetSummonerQueryDTO, findRiot: boolean = true, loading: boolean = false) {
     // Find by name or puuid
     const options = {
