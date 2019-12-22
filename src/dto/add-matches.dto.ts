@@ -13,7 +13,7 @@ export class AddMatches {
   @IsNotEmpty()
   match_id!: string
 
-  @ApiModelProperty({ enum: Object.values(SummonerServiceInsertMatch) })
+  @ApiModelProperty({ enum: Object.values(SummonerServiceInsertMatch), type: String })
   @IsEnum(Object.values(SummonerServiceInsertMatch))
   @IsNotEmpty()
   type!: SummonerServiceInsertMatch
