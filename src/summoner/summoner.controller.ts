@@ -51,13 +51,4 @@ export class SummonerController {
   update (@Body() body: GetSummonerQueryDTO) {
     return this.service.update(body)
   }
-
-  @Patch('match')
-  @ApiOperation({
-    title: 'Add matches to summoner'
-  })
-  @ApiUseTags('Update')
-  async addMatches (@Query() params: AddMatches) {
-    await this.service.insertMatches(params.summoner_id, params.match_id, params.type)
-  }
 }
