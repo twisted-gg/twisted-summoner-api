@@ -1,9 +1,10 @@
 import { CacheService } from './cache.service'
 import { version } from '../../package.json'
 import * as utils from '@twisted.gg/common/dist/services/cache/CacheService.utils'
+import { Logger } from '@nestjs/common'
 
 const service = new CacheService()
-
+const context = 'CacheService'
 export interface ICacheParams {
   expiration?: number
 }
@@ -33,7 +34,12 @@ export function Cache (params: ICacheParams = {}) {
       const result = await method.apply(this, args)
 
       // Set
-      service.set(key, result, expiration)
+      try {
+        await service.set(key, result, expiration)
+      } catch (e) {
+        const message = 'Error creating cache key'
+        Logger.error(message, e, context)
+      }
 
       return result
     }
