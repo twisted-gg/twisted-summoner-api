@@ -129,24 +129,20 @@ export class SummonerService {
     return this.summonerLeagueService.findHistoric(summoner._id)
   }
 
-  async insertMatches (ids: string[], matchId: string, type: SummonerServiceInsertMatch) {
+  async insertMatches (id: string, matchId: string, type: SummonerServiceInsertMatch) {
     if (!matchId) {
       return
     }
     const key =
       type === SummonerServiceInsertMatch.LOL ? MatchType.LOL : MatchType.TFT
     const condition = {
-      _id: {
-        $in: ids.map(id => Types.ObjectId(id))
-      }
+      _id: Types.ObjectId(id)
     }
     const value = {
-      $set: {}
+      $set: {
+        [`${key}\.${matchId}`]: true
+      }
     }
-
-    const matchKey = `$set.["${key}\.${matchId}"]`
-    const matchValue = true
-    _.set(value, matchKey, matchValue)
-    await this.repository.updateMany(condition, value)
+    await this.repository.updateOne(condition, value)
   }
 }

@@ -58,6 +58,6 @@ export class SummonerController {
   })
   @ApiUseTags('Update')
   async addMatches (@Query() params: AddMatches) {
-    await this.service.insertMatches([params.summoner_id], params.match_id, params.type)
+    await this.service.insertMatches(params.summoner_id, params.match_id, params.type)
   }
 }
