@@ -4,6 +4,7 @@ import { ApiOperation, ApiUseTags, ApiOkResponse } from '@nestjs/swagger'
 import { GetSummonerQueryDTO } from '@twisted.gg/common'
 import { GetSummonerLeaguesDTO, GetSummonerDTO } from '@twisted.gg/models'
 import { AddMatches } from '../dto/add-matches.dto'
+import { GetSummonerNameByIdResponse } from '../dto/get-name-by-id.dto'
 
 @Controller()
 export class SummonerController {
@@ -29,6 +30,16 @@ export class SummonerController {
   @ApiUseTags('Getters')
   getById (@Param('id') id: string) {
     return this.service.getById(id)
+  }
+
+  @Get('by-id/:id/summonerName')
+  @ApiOkResponse({ type: GetSummonerNameByIdResponse })
+  @ApiOperation({
+    title: 'Get summoner name by id'
+  })
+  @ApiUseTags('Getters')
+  getSummonerNameById (@Param('id') id: string) {
+    return this.service.getNameById(id)
   }
 
   @Get('leagues/historic')

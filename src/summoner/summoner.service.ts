@@ -12,6 +12,7 @@ import { GetSummonerQueryDTO } from '@twisted.gg/common'
 import { SummonerV4DTO } from '@twisted.gg/common/dist/wrapper/dto'
 import { ISummonerModel } from '@twisted.gg/models'
 import { ModelsName } from '@twisted.gg/models/dist/enum/collections.enum'
+import { GetSummonerNameByIdResponse } from '../dto/get-name-by-id.dto'
 
 @Injectable()
 export class SummonerService {
@@ -94,6 +95,13 @@ export class SummonerService {
       throw new NotFoundException()
     }
     return summoner
+  }
+
+  async getNameById (id: string): Promise<GetSummonerNameByIdResponse> {
+    const summoner = await this.getById(id)
+    return {
+      name: summoner.name
+    }
   }
 
   async get (params: GetSummonerQueryDTO, findRiot: boolean = true, loading: boolean = false) {
