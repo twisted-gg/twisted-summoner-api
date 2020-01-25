@@ -89,6 +89,9 @@ export class SummonerService {
     return this.get(params, false)
   }
 
+  @Cache({
+    expiration: CacheTimes.SUMMONER_SAVED
+  })
   async getById (id: string) {
     const summoner = await this.repository.findById(id)
     if (!summoner) {
@@ -97,6 +100,9 @@ export class SummonerService {
     return summoner
   }
 
+  @Cache({
+    expiration: CacheTimes.SUMMONER_SAVED
+  })
   async getNameById (id: string): Promise<GetSummonerNameByIdResponse> {
     const summoner = await this.getById(id)
     return {

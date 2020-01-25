@@ -9,6 +9,7 @@ function convert (val: string) {
 }
 
 export enum CacheTimes {
+  SUMMONER_SAVED = convert('365d'),
   SUMMONER = convert('72h'),
   DEFAULT = convert('1h')
 }
