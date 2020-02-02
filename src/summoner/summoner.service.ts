@@ -101,12 +101,15 @@ export class SummonerService {
     return summoner
   }
 
-  @Cache({
-    expiration: CacheTimes.SUMMONER_SAVED
-  })
-  async getNameById (id: string): Promise<GetSummonerNameByIdResponse> {
+  async getMultipleNameById (ids: string[]) {
+    const users = await Promise.all(ids.map(id => this.getSingleNameById(id)))
+    return { users }
+  }
+
+  async getSingleNameById (id: string): Promise<GetSummonerNameByIdResponse> {
     const summoner = await this.getById(id)
     return {
+      id: summoner._id,
       name: summoner.name
     }
   }
@@ -139,13 +142,21 @@ export class SummonerService {
   }
 
   async getMultiple (params: GetSummonerQueryDTO) {
-    const response: ISummonerModel[] = []
-    const summonerList = _.castArray(params.summonerName)
-    const findOnRiot = false
-    for (const summonerName of summonerList) {
-      response.push(await this.get({ summonerName, region: params.region }, findOnRiot))
+    const response: Promise<ISummonerModel>[] = []
+    const summonerNameList = _.castArray(params.summonerName)
+    const summonerIdList = _.castArray(params.accountID)
+    const length = Math.max(summonerNameList.length, summonerIdList.length)
+    const findOnRiot = true
+    for (let i = 0; i < length; i++) {
+      const obj: GetSummonerQueryDTO = {
+        summonerName: summonerNameList[i],
+        accountID: summonerIdList[i],
+        region: params.region
+      }
+      response.push(this.get(obj, findOnRiot))
     }
-    return response
+    const users = await Promise.all(response)
+    return { users }
   }
 
   // External methods

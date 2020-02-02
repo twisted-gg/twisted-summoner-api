@@ -24,7 +24,7 @@ export class SummonerController {
   }
 
   @Get('multi')
-  @ApiOkResponse({ type: [GetSummonerDTO] })
+  @ApiOkResponse({ type: { users: [GetSummonerDTO] } })
   @ApiOperation({
     title: 'Find multiple users'
   })
@@ -43,14 +43,21 @@ export class SummonerController {
     return this.service.getById(id)
   }
 
-  @Get('by-id/:id/summonerName')
+  @Get('summonerName/multi')
+  @ApiOkResponse({ type: GetSummonerNameByIdResponse })
+  @ApiUseTags('Getters')
+  getMultiSummonerNameById (@Query('id') id: string[]) {
+    return this.service.getMultipleNameById(id)
+  }
+
+  @Get('summonerName/:id')
   @ApiOkResponse({ type: GetSummonerNameByIdResponse })
   @ApiOperation({
     title: 'Get summoner name by id'
   })
   @ApiUseTags('Getters')
   getSummonerNameById (@Param('id') id: string) {
-    return this.service.getNameById(id)
+    return this.service.getSingleNameById(id)
   }
 
   @Get('league')
