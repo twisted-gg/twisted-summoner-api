@@ -2,7 +2,7 @@ import { Controller, Post, Get, Query, Body, Patch, Param } from '@nestjs/common
 import { SummonerService } from './summoner.service'
 import { ApiOperation, ApiUseTags, ApiOkResponse } from '@nestjs/swagger'
 import { GetSummonerQueryDTO } from '@twisted.gg/common'
-import { GetSummonerLeaguesDTO, GetSummonerDTO } from '@twisted.gg/models'
+import { GetSummonerLeaguesDTO, GetSummonerDTO, ISummonerModel } from '@twisted.gg/models'
 import { AddMatches } from '../dto/add-matches.dto'
 import { GetSummonerNameByIdResponse } from '../dto/get-name-by-id.dto'
 import { GetSummonerLeagueDto } from './dto/GetSummonerLeague.dto'
@@ -21,6 +21,16 @@ export class SummonerController {
   @ApiUseTags('Getters')
   get (@Query() params: GetSummonerQueryDTO) {
     return this.service.get(params)
+  }
+
+  @Get('multi')
+  @ApiOkResponse({ type: [GetSummonerDTO] })
+  @ApiOperation({
+    title: 'Find multiple users'
+  })
+  @ApiUseTags('Getters')
+  async getMultiple (@Query() params: GetSummonerQueryDTO) {
+    return this.service.getMultiple(params)
   }
 
   @Get('by-id/:id')

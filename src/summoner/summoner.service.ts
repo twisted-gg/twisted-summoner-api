@@ -133,9 +133,19 @@ export class SummonerService {
       return summoner
     }
     if (!findRiot) {
-      throw new NotFoundException('Summoner not found')
+      throw new NotFoundException(`Summoner not found ${params.summonerName}`)
     }
     return this.update(params, loading)
+  }
+
+  async getMultiple (params: GetSummonerQueryDTO) {
+    const response: ISummonerModel[] = []
+    const summonerList = _.castArray(params.summonerName)
+    const findOnRiot = false
+    for (const summonerName of summonerList) {
+      response.push(await this.get({ summonerName, region: params.region }, findOnRiot))
+    }
+    return response
   }
 
   // External methods
