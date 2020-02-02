@@ -13,6 +13,7 @@ import { SummonerV4DTO } from '@twisted.gg/common/dist/wrapper/dto'
 import { ISummonerModel } from '@twisted.gg/models'
 import { ModelsName } from '@twisted.gg/models/dist/enum/collections.enum'
 import { GetSummonerNameByIdResponse } from '../dto/get-name-by-id.dto'
+import { GetSummonerLeagueDto } from './dto/GetSummonerLeague.dto'
 
 @Injectable()
 export class SummonerService {
@@ -141,5 +142,15 @@ export class SummonerService {
   async leaguesHistoric (params: GetSummonerQueryDTO) {
     const summoner = await this.get(params)
     return this.summonerLeagueService.findHistoric(summoner._id)
+  }
+
+  async league (params: GetSummonerLeagueDto) {
+    const { league } = params
+    const summoner = await this.get(params)
+    const queue = summoner.leagues.find(l => l.queueId === +league || l.queueType === league)
+    if (!queue) {
+      throw new NotFoundException()
+    }
+    return queue
   }
 }

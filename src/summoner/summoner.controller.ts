@@ -5,6 +5,7 @@ import { GetSummonerQueryDTO } from '@twisted.gg/common'
 import { GetSummonerLeaguesDTO, GetSummonerDTO } from '@twisted.gg/models'
 import { AddMatches } from '../dto/add-matches.dto'
 import { GetSummonerNameByIdResponse } from '../dto/get-name-by-id.dto'
+import { GetSummonerLeagueDto } from './dto/GetSummonerLeague.dto'
 
 @Controller()
 export class SummonerController {
@@ -40,6 +41,17 @@ export class SummonerController {
   @ApiUseTags('Getters')
   getSummonerNameById (@Param('id') id: string) {
     return this.service.getNameById(id)
+  }
+
+  @Get('league')
+  @ApiOkResponse({ type: GetSummonerLeaguesDTO })
+  @ApiOperation({
+    title: 'Summoner league',
+    description: 'Find summoner league'
+  })
+  @ApiUseTags('Getters')
+  league (@Query() params: GetSummonerLeagueDto) {
+    return this.service.league(params)
   }
 
   @Get('leagues/historic')
