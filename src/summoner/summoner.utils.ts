@@ -1,18 +1,11 @@
 import { SummonerV4DTO } from '@twisted.gg/common/dist/wrapper/dto'
 import { ISummonerLeagueModel, ISummonerModel } from '@twisted.gg/models'
 import { Regions } from '@twisted.gg/common/dist/wrapper/constants'
+import { getQueueId } from '../summoner-leagues/summoner-leagues.utils'
 
 export enum SummonerUtilsEnum {
   BOT_TAG = '0',
   BOT_NAME = 'Bot'
-}
-
-export function matchLeagues (leagues: Partial<ISummonerLeagueModel>[]) {
-  const response = new Map()
-  for (const league of leagues) {
-    response.set(league.queueType, league)
-  }
-  return response
 }
 
 export function isBot (accountId: string | undefined) {
@@ -41,7 +34,10 @@ export function riotToModel (
     revisionDate: riot.revisionDate,
     id: riot.id,
     puuid: riot.puuid,
-    leagues: matchLeagues(leagues),
+    leagues: leagues.map((league) => ({
+      queueId: getQueueId(league.queueType),
+      ...league
+    })),
     accountId,
     region,
     bot,
