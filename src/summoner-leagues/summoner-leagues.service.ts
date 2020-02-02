@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
-import { RiotApiService } from '../riot-api/riot-api.service'
+import riot from '../riot-api/riot-api.service'
 import { Regions } from '@twisted.gg/common/dist/wrapper/constants'
 import * as utils from './summoner-leagues.utils'
 import { Cache } from '../cache/cache.decorator'
@@ -11,12 +11,10 @@ import { ModelsName } from '@twisted.gg/models/dist/enum/collections.enum'
 
 @Injectable()
 export class SummonerLeaguesService {
-  private readonly api = this.riot.getLolApi().League
+  private readonly api = riot.getLolApi().League
 
   constructor (
-    @InjectModel(ModelsName.SUMMONER_LEAGUES) private readonly repository: Model<ISummonerLeagueModel>,
-
-    private readonly riot: RiotApiService
+    @InjectModel(ModelsName.SUMMONER_LEAGUES) private readonly repository: Model<ISummonerLeagueModel>
   ) {}
 
   @Cache({

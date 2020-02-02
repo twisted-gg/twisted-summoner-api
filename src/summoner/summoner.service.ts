@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { Model, ModelUpdateOptions, Types } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { RiotApiService } from '../riot-api/riot-api.service'
+import riot from '../riot-api/riot-api.service'
 import * as summonerUtils from './summoner.utils'
 import * as _ from 'lodash'
 import { SummonerLeaguesService } from '../summoner-leagues/summoner-leagues.service'
@@ -17,12 +17,11 @@ import { GetSummonerLeagueDto } from './dto/GetSummonerLeague.dto'
 
 @Injectable()
 export class SummonerService {
-  private readonly api = this.riot.getLolApi().Summoner
+  private readonly api = riot.getLolApi().Summoner
 
   constructor (
     @InjectModel(ModelsName.SUMMONER) private readonly repository: Model<ISummonerModel>,
-    private readonly summonerLeagueService: SummonerLeaguesService,
-    private readonly riot: RiotApiService
+    private readonly summonerLeagueService: SummonerLeaguesService
   ) {}
 
   @Cache({

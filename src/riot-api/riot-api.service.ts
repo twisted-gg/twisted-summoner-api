@@ -2,33 +2,26 @@ import { Injectable } from '@nestjs/common'
 import { LolApi, TftApi } from '@twisted.gg/common/dist/wrapper'
 import { ConfigService } from '../config/config.service'
 
-@Injectable()
-export class RiotApiService {
-  private readonly lolApi: LolApi
-  private readonly tftApi: TftApi
-
-  constructor (
-    private readonly config: ConfigService
-  ) {
-    const params = {
-      key: this.config.get<string>('riot.apiKey'),
-      rateLimitRetry: this.config.getBoolean('riot.rateLimitRetry'),
-      rateLimitRetryAttempts: this.config.getNumber('riot.rateLimitCount'),
-      concurrency: +this.config.getNumber('riot.concurrency'),
-      debug: {
-        logUrls: this.config.getBoolean('riot.debug.url'),
-        logRatelimits: this.config.getBoolean('riot.debug.rateLimits')
-      }
-    }
-    this.lolApi = new LolApi(params)
-    this.tftApi = new TftApi(params)
+const config = new ConfigService()
+const params = {
+  key: config.get<string>('riot.apiKey'),
+  rateLimitRetry: config.getBoolean('riot.rateLimitRetry'),
+  rateLimitRetryAttempts: config.getNumber('riot.rateLimitCount'),
+  concurrency: +config.getNumber('riot.concurrency'),
+  debug: {
+    logUrls: config.getBoolean('riot.debug.url'),
+    logRatelimits: config.getBoolean('riot.debug.rateLimits')
   }
+}
+const lolApi = new LolApi(params)
+const tftApi = new TftApi(params)
 
+export default {
   getTftApi (): TftApi {
-    return this.tftApi
-  }
+    return tftApi
+  },
 
   getLolApi (): LolApi {
-    return this.lolApi
+    return lolApi
   }
 }

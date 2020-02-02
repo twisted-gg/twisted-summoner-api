@@ -1,5 +1,4 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common'
-import { RiotApiModule } from './riot-api/riot-api.module'
 import { ConfigModule } from './config/config.module'
 import { SummonerModule } from './summoner/summoner.module'
 import { SummonerLeaguesModule } from './summoner-leagues/summoner-leagues.module'
@@ -11,7 +10,6 @@ import { OriginMiddleware } from '@twisted.gg/common'
   imports: [
     DatabaseConnection,
     ConfigModule,
-    RiotApiModule,
     SummonerModule,
     SummonerLeaguesModule
   ],
