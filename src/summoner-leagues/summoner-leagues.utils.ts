@@ -25,7 +25,6 @@ export function riotToModel (leagues: SummonerLeagueDto | SummonerLeagueDto[], s
     const createItem = {
       queueId: getQueueId(item.queueType),
       ...item,
-      rank: romanToInt(item.rank),
       summoner: summoner
     }
     response.push(createItem as ISummonerLeagueModel)
