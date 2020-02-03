@@ -27,5 +27,8 @@ export default {
   redis: {
     enable: process.env.REDIS_ENABLE,
     url: process.env.REDIS_URL
+  },
+  services: {
+    mmr: process.env.MMR_SERVICE
   }
 }

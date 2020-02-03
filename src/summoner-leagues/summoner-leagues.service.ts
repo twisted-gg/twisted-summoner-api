@@ -20,11 +20,11 @@ export class SummonerLeaguesService {
   @Cache({
     expiration: CacheTimes.SUMMONER
   })
-  async findOnRiot (id: string, region: Regions) {
+  async findOnRiot (id: string, region: Regions, summoner: string) {
     const {
       response: leagues
     } = await this.api.bySummoner(id, region)
-    return utils.riotToModel(leagues)
+    return utils.riotToModel(leagues, summoner)
   }
 
   async create (leagues: ISummonerLeagueModel | ISummonerLeagueModel[]) {
