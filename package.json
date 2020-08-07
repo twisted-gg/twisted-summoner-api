@@ -31,7 +31,7 @@
     "@nestjs/swagger": "^3.1.0",
     "@twisted.gg/common": "^1.0.15",
     "@twisted.gg/models": "^1.0.15",
-    "class-transformer": "^0.2.3",
+    "class-transformer": "^0.3.1",
     "class-validator": "^0.10.2",
     "js-roman-numerals": "^1.1.0",
     "lodash": "^4.17.15",
