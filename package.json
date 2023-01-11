@@ -32,7 +32,7 @@
     "@twisted.gg/common": "^1.0.15",
     "@twisted.gg/models": "^1.0.15",
     "class-transformer": "^0.2.3",
-    "class-validator": "^0.10.2",
+    "class-validator": "^0.14.0",
     "js-roman-numerals": "^1.1.0",
     "lodash": "^4.17.15",
     "mongoose": "^5.7.7",
